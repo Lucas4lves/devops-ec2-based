@@ -23,6 +23,10 @@ variable "security_group_ids" {
   default = []
 }
 
+variable "iam_instance_profile" {
+  type = string
+}
+
 variable "subnet_id" {
   type = string
   default = ""
