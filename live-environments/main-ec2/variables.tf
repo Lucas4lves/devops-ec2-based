@@ -1,3 +1,7 @@
+variable "vpc_id" {
+  type = string
+}
+
 variable "ami_id" {
   type = string
   default = ""
@@ -16,11 +20,6 @@ variable "instance_name" {
 variable "custom_tags" {
   type = map(string)
   default = {}
-}
-
-variable "security_group_ids" {
-  type = list(string)
-  default = []
 }
 
 variable "subnet_id" {

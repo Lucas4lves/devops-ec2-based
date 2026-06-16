@@ -8,6 +8,8 @@ resource "aws_instance" "this" {
     Module = "Devops EC2 Based"
   })
 
+  iam_instance_profile = var.iam_instance_profile
+
   vpc_security_group_ids = var.security_group_ids
   subnet_id = var.subnet_id
 }
