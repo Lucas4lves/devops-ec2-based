@@ -1,7 +1,5 @@
 FROM wordpress:latest
 
-RUN apt-get update && apt-get install -y unzip curl && rm -rf /var/lib/apt/lists/*
-
 # Install pg4wp
 RUN curl -fsSL https://github.com/PostgreSQL-For-Wordpress/postgresql-for-wordpress/archive/refs/heads/master.zip -o /tmp/pg4wp.zip \
   && unzip /tmp/pg4wp.zip -d /tmp \

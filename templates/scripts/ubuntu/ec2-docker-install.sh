@@ -35,7 +35,7 @@ usermod -aG docker $SSM_USERNAME
 systemctl enable --now docker
 
 # clone repo and start wordpress
-git clone https://github.com/Lucas4lves/devops-ec2-based.git /opt/devops-ec2-based >> "$LOG_FILE" 2>&1
+git clone -b ${repo_branch} https://github.com/Lucas4lves/devops-ec2-based.git /opt/devops-ec2-based >> "$LOG_FILE" 2>&1
 docker compose -f /opt/devops-ec2-based/apps/wordpress/docker-compose.yml up -d --build >> "$LOG_FILE" 2>&1
 
 # ensure ssm-user has docker group on every SSM agent start
