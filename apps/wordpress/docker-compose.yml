@@ -1,0 +1,26 @@
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: wordpress
+      POSTGRES_USER: wordpress
+      POSTGRES_PASSWORD: wordpress
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  wordpress:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+
+volumes:
+  db_data:
