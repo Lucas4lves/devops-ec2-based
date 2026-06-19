@@ -1,17 +1,18 @@
 services:
   db:
-    image: postgres:16
-    restart: always
+    image: mysql:8
+    restart: no
     environment:
-      POSTGRES_DB: wordpress
-      POSTGRES_USER: wordpress
-      POSTGRES_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: wordpress
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/mysql
 
   wordpress:
-    build: .
-    restart: always
+    image: wordpress:latest
+    restart: no
     depends_on:
       - db
     ports:
