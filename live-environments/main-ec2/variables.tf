@@ -27,7 +27,7 @@ variable "subnet_id" {
   default = ""
 }
 
-variable "user_data" {
-  type = string
-  default = null
+variable "repo_branch" {
+  type    = string
+  default = "main"
 }

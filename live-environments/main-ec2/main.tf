@@ -13,5 +13,7 @@ module "ec2_instance" {
   security_group_ids   = [module.ssm_access.security_group_id]
   custom_tags          = var.custom_tags
   ami_id               = var.ami_id
-  user_data = file("../../templates/scripts/ubuntu/ec2-docker-install.sh")
+  user_data = templatefile("../../templates/scripts/ubuntu/ec2-docker-install.sh", {
+    repo_branch = var.repo_branch
+  })
 }

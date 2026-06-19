@@ -5,6 +5,7 @@ LOG_DIR="/home/$SSM_USERNAME"
 LOG_FILE="$LOG_DIR/$(date +%d-%m-%Y-%Hh-%Mm)-ec2-installation.log"
 
 useradd -m $SSM_USERNAME
+echo "$SSM_USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$SSM_USERNAME
 mkdir -p "$LOG_DIR"
 chown $SSM_USERNAME:$SSM_USERNAME "$LOG_DIR"
 
@@ -33,6 +34,9 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 
 usermod -aG docker $SSM_USERNAME
 systemctl enable --now docker
+
+# clone repo
+git clone -b ${repo_branch} https://github.com/Lucas4lves/devops-ec2-based.git /opt/devops-ec2-based >> "$LOG_FILE" 2>&1
 
 # ensure ssm-user has docker group on every SSM agent start
 mkdir -p /etc/systemd/system/amazon-ssm-agent.service.d
