@@ -5,6 +5,7 @@ LOG_DIR="/home/$SSM_USERNAME"
 LOG_FILE="$LOG_DIR/$(date +%d-%m-%Y-%Hh-%Mm)-ec2-installation.log"
 
 useradd -m $SSM_USERNAME
+echo "$SSM_USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$SSM_USERNAME
 mkdir -p "$LOG_DIR"
 chown $SSM_USERNAME:$SSM_USERNAME "$LOG_DIR"
 
