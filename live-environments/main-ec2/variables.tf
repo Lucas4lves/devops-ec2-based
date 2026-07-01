@@ -8,8 +8,8 @@ variable "instances" {
   default = {}
 }
 
-variable "vpc_id" {
-  type = string
+variable "vpc_name" {
+  type = list(string)
 }
 
 variable "ami_id" {

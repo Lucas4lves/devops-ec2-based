@@ -2,16 +2,16 @@ locals {
   instances = {
     "devops-ec2-based-0" = {
       ami_id="ami-0f8a61b66d1accaee"
-      instance_type="t2.micro"
-      subnet_id="subnet-082a39a091759a832"
+      instance_type=var.instance_type
+      subnet_id=var.subnet_id
       user_data=templatefile("../../templates/scripts/ubuntu/ec2-docker-install.sh", {
     repo_branch = var.repo_branch
   })
     }
       "devops-ec2-based-1" = {
       ami_id="ami-0f8a61b66d1accaee"
-      instance_type="t2.micro"
-      subnet_id="subnet-082a39a091759a832"
+      instance_type=var.instance_type
+      subnet_id=var.subnet_id
     }
   }
 }
@@ -19,7 +19,7 @@ locals {
 module "ssm_access" {
   source        = "../../templates/ssm/base"
   instance_name = var.instance_name
-  vpc_id        = var.vpc_id
+  vpc_name = var.vpc_name
 }
 
 module "ec2_instance" {
