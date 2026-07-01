@@ -1,3 +1,18 @@
+variable "instances_count" {
+  type = number
+  default = 1
+}
+
+variable "instances" {
+  type = map(object({
+    subnet_id = string
+    instance_type = string
+    ami_id = string    
+    user_data = optional(string, null)
+  }))
+  default = {}
+}
+
 variable "ami_id" {
   type = string
   default = ""
