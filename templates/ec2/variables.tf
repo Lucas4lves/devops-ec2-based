@@ -9,6 +9,7 @@ variable "instances" {
     instance_type = string
     ami_id = string    
     user_data = optional(string, null)
+    security_group_ids = optional(list(string), null)
   }))
   default = {}
 }
