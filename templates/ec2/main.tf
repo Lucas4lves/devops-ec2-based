@@ -4,7 +4,7 @@ resource "aws_instance" "this" {
   instance_type = each.value.instance_type
 
   tags = merge(var.custom_tags,{
-    Name = var.instance_name,
+    Name = each.key,
     ManagedBy = "OpenTofu",
     Module = "Devops EC2 Based"
   })

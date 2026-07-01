@@ -1,6 +1,13 @@
+data "aws_vpc" "this" {
+  filter {
+    name = "tag:Name"
+    values = var.vpc_name
+  }
+}
+
 resource "aws_security_group" "ssm" {
   name   = "${var.instance_name}-ssm-sg"
-  vpc_id = var.vpc_id
+  vpc_id = data.aws_vpc.this.id
 
   ingress {
     from_port   = 80
