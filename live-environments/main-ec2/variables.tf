@@ -63,3 +63,7 @@ variable "repo_branch" {
   type    = string
   default = "main"
 }
+
+variable "sg_allowed_ips" {
+  type = list(string)
+}

@@ -33,13 +33,13 @@ locals {
           from_port = 80
           to_port = 80
           protocol = "tcp"
-          cidr_blocks = ["201.139.187.194/32"]
+          cidr_blocks = var.sg_allowed_ips
         },
         {
           from_port = 443
           to_port = 443
           protocol = "tcp"
-          cidr_blocks = ["201.139.187.194/32"]
+          cidr_blocks = var.sg_allowed_ips
         },
         {
           from_port = 0
