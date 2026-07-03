@@ -64,6 +64,6 @@ variable "repo_branch" {
   default = "main"
 }
 
-variable "sg_allowed_ips" {
+variable "sg_allowed_cidr_blocks" {
   type = list(string)
 }
