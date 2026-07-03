@@ -8,6 +8,28 @@ variable "instances" {
   default = {}
 }
 
+variable "security_groups_config" {
+  type = map(object({
+    ingress_rules = list(object({
+      from_port   = number
+      to_port     = number
+      protocol    = string
+      cidr_blocks = list(string)
+    }))
+    egress_rules = list(object({
+      from_port   = number
+      to_port     = number
+      protocol    = string
+      cidr_blocks = list(string)
+    }))
+  }))
+  default = {}
+}
+
+variable "project_handler" {
+  type = string
+}
+
 variable "vpc_name" {
   type = list(string)
 }
@@ -40,4 +62,8 @@ variable "subnet_id" {
 variable "repo_branch" {
   type    = string
   default = "main"
+}
+
+variable "sg_allowed_cidr_blocks" {
+  type = list(string)
 }
